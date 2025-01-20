@@ -32,7 +32,7 @@ gcloud deploy apply --file=clouddeploy.yaml --region=us-central1 --project=$PROJ
 Once your image is built and pushed, create a release using Cloud Deploy:
 
 ```bash
-gcloud deploy releases create test-release-005 \
+gcloud deploy releases create test-release-001 \
   --project=$PROJECT \
   --region=us-central1 \
   --delivery-pipeline=my-run-demo-app-1 \
@@ -46,7 +46,7 @@ Replace `<digest>` with the SHA256 digest of the image built by Skaffold.
 Promote the release to the desired target (e.g., `prod`):
 
 ```bash
-gcloud deploy rollouts create --release=test-release-001 --project=$PROJECT --region=us-central1 --target=prod
+gcloud deploy releases promote --release=test-release-001 --delivery-pipeline=my-run-demo-app-1 --project=$PROJECT --region=us-central1
 ```
 
 ## Additional Notes
